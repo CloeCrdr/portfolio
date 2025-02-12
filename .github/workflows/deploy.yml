@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/portfolio-cloe/
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
-          protocol: ftps
+          protocol: ftp
           port: 21
           security: strict
           active-mode: false
