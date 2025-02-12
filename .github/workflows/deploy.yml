@@ -1,4 +1,4 @@
-name: Deploy to AlwaysData via FTP SSL
+name: Deploy to AlwaysData via SSH
 
 on:
   push:
@@ -13,34 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18.19
-
-      - name: Clean npm cache
-        run: npm cache clean --force
 
       - name: Install dependencies
         run: npm install
 
       - name: Build Angular app
-        run: npm run build -- --configuration production
+        run: npm run build -- --prod --configuration production
 
-      - name: Deploy via FTP-SSL
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy via SSH (Password)
+        uses: appleboy/scp-action@v0.1.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/portfolio-cloe/
-          server-dir: ${{ secrets.FTP_TARGET_DIR }}
-          protocol: ftps
-          port: 990
-          security: strict
-          active-mode: false
-          log-level: verbose
-          exclude : \"**/*.map\"
-          dangerous-clean-slate: true
-
-          timeout: 60000
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: 22
+          source: "./dist/portfolio-cloe/*"
+          target: "${{ secrets.SSH_TARGET_DIR }}"
