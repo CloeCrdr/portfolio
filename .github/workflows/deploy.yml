@@ -37,7 +37,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "./dist/portfolio-cloe/browser/*"
+          source: "./dist/portfolio-cloe/browser/**/*"
           target: "${{ secrets.SSH_TARGET_DIR }}"
-          strip_components: 4
           debug: true
