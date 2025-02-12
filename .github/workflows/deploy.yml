@@ -30,7 +30,10 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/ton-projet/
+          local-dir: ./dist/portfolio/
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
           protocol: ftps
           port: 21
+          security: strict
+          passive: true
+          verbose: true
