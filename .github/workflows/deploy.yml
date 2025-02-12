@@ -39,4 +39,5 @@ jobs:
           port: 22
           source: "./dist/portfolio-cloe/browser/*"
           target: "${{ secrets.SSH_TARGET_DIR }}"
+          strip_components: 4
           debug: true
