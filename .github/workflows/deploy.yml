@@ -34,5 +34,6 @@ jobs:
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
           protocol: ftps
           port: 21
-          security: strict
+          security: control
+          active-mode: false
           log-level: verbose
