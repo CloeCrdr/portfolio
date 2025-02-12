@@ -24,15 +24,12 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration production --base-href /
 
-      - name: List dist directory (debug)
-        run: ls -R ./dist/portfolio-cloe
-
-      - name: Deploy via SSH (Password)
+      - name: Deploy only browser files via SSH (Password)
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "./dist/portfolio-cloe/*"
+          source: "./dist/portfolio-cloe/browser/*"
           target: "${{ secrets.SSH_TARGET_DIR }}"
