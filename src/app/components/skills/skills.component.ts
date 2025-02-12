@@ -10,14 +10,28 @@ import { trigger, transition, style, animate } from '@angular/animations';
   styleUrls: ['./skills.component.scss'],
   animations: [
     trigger('fadeIn', [
-      transition(':enter',[
-        style({opacity: 0}),
+      transition(':enter', [
+        style({ opacity: 0 }),
         animate('800ms ease-in', style({ opacity: 1 }))
       ])
     ])
   ]
 })
 export class SkillsComponent {
-  @Input() activeSection: string ='';
-  skills = ['Angular', 'TypeScript', 'SCSS', 'HTML5', 'JavaScript', 'Node.js', 'No-Code'];
+  @Input() activeSection: string = '';
+  skills = [
+    'Angular', 
+    'TypeScript',
+    'SCSS', 
+    'HTML5', 
+    'CSS3', 
+    'JavaScript', 
+    'Node.js', 
+    'No-Code', 
+    'React', 
+    'Java', 
+    'Git',
+    'Responsive Design',
+    'Notions cybersécurité et DevOps'
+  ];
 }

@@ -2,7 +2,11 @@
   class="skills"
   [class.inactive]="activeSection && activeSection!== 'skills'"
   @fadeIn>
+  <div class="skills-container">
     <h2>Mes Compétences 🛠️</h2>
-    <div class="skill-badge" *ngFor="let skill of skills">{{ skill }}</div>
+    <div class="skills-grid">
+      <div class="skill-badge" *ngFor="let skill of skills">{{ skill }}</div>
+    </div>
+  </div>
   </section>
   
