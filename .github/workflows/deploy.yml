@@ -33,7 +33,7 @@ jobs:
           local-dir: ./dist/portfolio-cloe/
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
           protocol: ftps
-          port: 21
+          port: 990
           security: strict
           active-mode: false
           log-level: verbose
