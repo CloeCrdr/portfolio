@@ -1,4 +1,4 @@
-name: Deploy to AlwaysData via SSH
+name: Deploy to AlwaysData via SSH (Password)
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: npm run build -- --prod --configuration production
+        run: npm run build -- --configuration production
 
       - name: Deploy via SSH (Password)
         uses: appleboy/scp-action@v0.1.4
