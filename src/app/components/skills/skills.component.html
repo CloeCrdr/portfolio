@@ -4,9 +4,48 @@
   @fadeIn>
   <div class="skills-container">
     <h2>Mes Compétences 🛠️</h2>
-    <div class="skills-grid">
-      <div class="skill-badge" *ngFor="let skill of skills">{{ skill }}</div>
+    <div class="skills-category">
+      <h3>Développement web</h3>
+      <div class="skills-grid">
+        <div class="skill-badge" *ngFor="let skill of skills.developpement">{{ skill }}</div>
+      </div>
     </div>
+
+    <div class="skills-category">
+      <h3>Design</h3>
+      <div class="skills-grid">
+        <div class="skill-badge" *ngFor="let skill of skills.design">{{ skill }}</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Gestion de projets</h3>
+      <div class="skills-grid">
+        <div class="skill-badge" *ngFor="let skill of skills.projets">{{ skill }}</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Marketing</h3>
+      <div class="skills-grid">
+        <div class="skill-badge" *ngFor="let skill of skills.marketing">{{ skill }}</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Tests / Qualité / Sécurité</h3>
+      <div class="skills-grid">
+        <div class="skill-badge" *ngFor="let skill of skills.qualite">{{ skill }}</div>
+      </div>
+    </div>
+
+    <div class="skills-category">
+      <h3>Langues</h3>
+      <div class="skills-grid">
+        <div class="skill-badge" *ngFor="let skill of skills.langues">{{ skill }}</div>
+      </div>
+    </div>    
+    
   </div>
   </section>
   

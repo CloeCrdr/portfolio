@@ -19,19 +19,63 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class SkillsComponent {
   @Input() activeSection: string = '';
-  skills = [
-    'Angular', 
-    'TypeScript',
-    'SCSS', 
-    'HTML5', 
-    'CSS3', 
-    'JavaScript', 
-    'Node.js', 
-    'No-Code', 
-    'React', 
-    'Java', 
-    'Git',
-    'Responsive Design',
-    'Notions cybersécurité et DevOps'
-  ];
+  skills = {
+    developpement: [
+      'HTML5', 
+      'CSS3', 
+      'JavaScript',
+      'TypeScript',
+      'Angular',
+      'React',
+      'ExpressJS',
+      'Node.js',
+      'PHP',
+      'Bootstrap', 
+      'Tailwind',
+      'Python', 
+      'Django',
+      'MySQL',
+      'SCSS', 
+      'Git',
+      'PrestaShop',
+      'WordPress',
+      'Java'
+    ],
+    projets: [
+      'Agile',
+      'SAFe',
+      'Scrum',
+      'Jira',
+      'Trello',
+      'No-Code'
+    ],
+    marketing: [
+      'SEO',
+      'Google Analytics',
+      'Réseaux Sociaux',
+      'Stratégie Digitale',
+      'Rédactions techniques',
+      'Traduction'
+    ],
+    qualite: [
+      'Automatisation',
+      'Accessibilité Web',
+      'Jasmine',
+      'SonarQube',
+      'Notions Cybersécurité & DevOps'
+    ],
+    design: [
+      'Figma',
+      'Photoshop',
+      'UI/UX Design',
+      'Responsive Design'
+    ],
+    langues: [
+      'Français (natif)',
+      'Anglais (courant & fluide)',
+      'Italien (courant)',
+      'Portugais (courant)',
+      'Espagnol (notions)'
+    ]
+  };
 }
