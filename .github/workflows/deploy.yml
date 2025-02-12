@@ -28,14 +28,15 @@ jobs:
         run: npx ng build --configuration production --base-href ./ --deploy-url ./
 
       - name: List dist directory (debug)
-        run: ls -R ./dist/portfolio-cloe
+        run: ls -R ./dist/portfolio-cloe/browser
 
-      - name: Deploy files to AlwaysData
+      - name: Deploy only browser files to AlwaysData
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "./dist/portfolio-cloe/*"
+          source: "./dist/portfolio-cloe/browser/*"
           target: "${{ secrets.SSH_TARGET_DIR }}"
+          debug: true
