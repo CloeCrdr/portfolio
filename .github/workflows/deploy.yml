@@ -30,7 +30,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/portfolio-cloe
+          local-dir: ./dist/portfolio-cloe/
           server-dir: ${{ secrets.FTP_TARGET_DIR }}
           protocol: ftps
           port: 21
