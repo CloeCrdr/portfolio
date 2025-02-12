@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    <li><a href="">Accueil</a></li>
+    <li><a href="#about" (click)="setActiveSection('about')">À propos</a></li>
+    <li><a href="#projects" (click)="setActiveSection('projects')">Projets</a></li>
+    <li><a href="#skills" (click)="setActiveSection('skills')">Compétences</a></li>
+    <li><a href="#contact" (click)="setActiveSection('contact')">Contact</a></li>
+  </ul>
+</nav>
+<app-home [activeSection]="activeSection"></app-home>
+
+<button class="back-to-top" (click)="scrollToTop()" [class.show]="showButton">⬆️</button>

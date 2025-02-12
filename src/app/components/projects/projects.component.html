@@ -1,0 +1,22 @@
+<section id="projects" 
+  class="projects"
+  [class.inactive]="activeSection && activeSection !== 'projects'"
+  @fadeIn>
+  <h2>Mes Projets 🚀</h2>
+  <div class="carousel-container">
+    <owl-carousel-o [options]="customOptions" class="projects-carousel">
+      <ng-container *ngFor="let project of projects">
+        <ng-template carouselSlide>
+          <div class="project-card">
+            <img [src]="project.image" alt="{{ project.title }}" />
+            <div class="project-info">
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.description }}</p>
+              <a [href]="project.link" target="_blank">Voir le projet 🔗</a>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>

@@ -1,0 +1,121 @@
+/* Style général - Mobile First */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+    z-index: 1000;
+  }
+  
+  .back-to-top:hover {
+    background-color: #e5533d;
+    transform: scale(1.1);
+  }
+  
+  /* Classe pour afficher le bouton */
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  section {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+  section.inactive {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  nav {
+    background: #333;
+    padding: 0.5rem;
+  
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;  // Stack en colonne pour mobile
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+  
+      li {
+        position: relative;
+  
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-weight: bold;
+          font-size: 1.2rem;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #ff6347;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 6px;
+            background-color: #ff6347;
+            bottom: -4px;
+            left: 0%;
+            transition: width 0.3s ease
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+  
+          &.active {
+            color: #ff6347;  // Couleur de l'élément actif
+
+            &::after {
+              content: '';
+              position: absolute;
+              width: 100%;  // Le soulignement est complet quand l'élément est actif
+              height: 2px;
+              background-color: #ff6347;
+              bottom: -4px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Ajustement pour les grands écrans */
+  @media (min-width: 768px) {
+    nav ul {
+      flex-direction: row;  // Horizontal pour tablette et desktop
+      justify-content: center;
+    }
+  
+    nav li {
+      margin: 0 1rem;
+    }
+  }
+  
