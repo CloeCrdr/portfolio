@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 })
 export class AppComponent {
   title = 'portfolio | Cloe Gaspar Cordeiro';
+  menuOpen = false;
 
   activeSection: string = '';
   showButton: boolean = false;
@@ -26,4 +27,9 @@ export class AppComponent {
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth'}); 
   }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+  
 }

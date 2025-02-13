@@ -1,5 +1,6 @@
 <nav>
-  <ul>
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  <ul class="nav-menu" [class.active]="menuOpen">
     <li><a href="#home" (click)="setActiveSection('')">Accueil</a></li>
     <li><a href="#about" (click)="setActiveSection('about')">À propos</a></li>
     <li><a href="#projects" (click)="setActiveSection('projects')">Projets</a></li>

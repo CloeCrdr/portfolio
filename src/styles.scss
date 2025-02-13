@@ -4,125 +4,139 @@ html {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-  }
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
 
-  .back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ff6347;
-    color: #fff;
-    border: none;
-    padding: 5px 20px 15px 20px;
-    border-radius: 50%;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
-    z-index: 1000;
-  }
-  
-  .back-to-top:hover {
-    background-color: #e5533d;
-    transform: scale(1.1);
-  }
-  
-  /* Classe pour afficher le bouton */
-  .back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  section {
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  }
-  
-  section.inactive {
-    opacity: 0.3;
-    transform: scale(0.95);
-  }
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff6347;
+  color: #fff;
+  border: none;
+  padding: 5px 20px 15px 20px;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background-color: #e5533d;
+  transform: scale(1.1);
+}
+
+/* Classe pour afficher le bouton */
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+section {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+section.inactive {
+  opacity: 0.3;
+  transform: scale(0.95);
+}
+
+/* Navigation - Mobile: Menu hamburger */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  padding: 1rem;
+  z-index: 9999;
+  text-align: center;
+}
+
+.menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  background: #333;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  padding: 20px;
+  border-radius: 8px;
+  list-style: none;
+}
+
+.nav-menu.active {
+  display: flex;
+}
+
+.nav-menu li {
+  padding: 10px 0;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: #ff6347;
+}
+
+/* Desktop - Navigation centrée en haut */
+@media (min-width: 1024px) {
   nav {
-     width: 100%;
-     text-align: center;
-  
-    ul {
-      background: #333;
-      padding: 0.5rem; 
-      z-index: 9999;
-      position: fixed;
-      top: 1.5%;
-      left: 20%;
-      list-style: none;
-      display: flex;
-      flex-direction: column;  // Stack en colonne pour mobile
-      gap: 1rem;
-      padding: 20px;
-      margin: 0;
-      align-items: center;
-  
-      li {
-        position: relative;
-  
-        a {
-          text-decoration: none;
-          color: #fff;
-          font-weight: bold;
-          font-size: 1.2rem;
-          transition: color 0.3s ease;
-
-          &:hover {
-            color: #ff6347;
-          }
-
-          &:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 6px;
-            background-color: #ff6347;
-            bottom: -4px;
-            left: 0%;
-            transition: width 0.3s ease
-          }
-
-          &:hover::after {
-            width: 100%;
-          }
-  
-          &.active {
-            color: #ff6347;  // Couleur de l'élément actif
-
-            &::after {
-              content: '';
-              position: absolute;
-              width: 100%;  // Le soulignement est complet quand l'élément est actif
-              height: 2px;
-              background-color: #ff6347;
-              bottom: -4px;
-            }
-          }
-        }
-      }
-    }
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background: transparent;
   }
-  
-  /* Ajustement pour les grands écrans */
-  @media (min-width: 768px) {
-    nav ul {
-      flex-direction: row;  // Horizontal pour tablette et desktop
-      justify-content: center;
-    }
-  
-    nav li {
-      margin: 0 1rem;
-    }
+
+  .menu-toggle {
+    display: none; /* Cache le menu hamburger sur desktop */
   }
-  
+
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    background: transparent;
+    width: 50%;
+    margin: 1% auto;
+    padding: 10px 15px;
+    list-style : none;
+    background-color: #333;
+  }
+
+  .nav-menu li {
+    margin: 0 1rem;
+  }
+}
