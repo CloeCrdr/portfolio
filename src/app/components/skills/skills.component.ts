@@ -36,7 +36,10 @@ export class SkillsComponent {
       'Django',
       'MySQL',
       'SCSS', 
-      'Git'
+      'Git',
+      'Wordpress',
+      'Prestashop',
+      'Java'
     ],
     projets: [
       'Agile',
