@@ -57,11 +57,11 @@ jobs:
           script: |
             set -e
             mkdir -p "${{ secrets.SSH_TARGET_DIR }}"
-            mkdir -p "${{ secrets.SSH_TARGET_DIR }}/server"
-            mkdir -p "${{ secrets.SSH_TARGET_DIR }}/dist/portfolio-cloe"
             rm -rf "${{ secrets.SSH_TARGET_DIR }}/node_modules"
-            rm -rf "${{ secrets.SSH_TARGET_DIR }}/dist/portfolio-cloe/browser"
+            rm -rf "${{ secrets.SSH_TARGET_DIR }}/dist"
             rm -rf "${{ secrets.SSH_TARGET_DIR }}/server/node_modules"
+            rm -rf "${{ secrets.SSH_TARGET_DIR }}/server/.npm-cache"
+            mkdir -p "${{ secrets.SSH_TARGET_DIR }}/server"
 
       - name: Upload runtime files to AlwaysData
         uses: appleboy/scp-action@v0.1.4
@@ -85,5 +85,6 @@ jobs:
           script: |
             set -e
             cd "${{ secrets.SSH_TARGET_DIR }}/server"
-            rm -rf node_modules
-            npm ci --omit=dev
+            rm -rf node_modules .npm-cache
+            npm ci --omit=dev --no-audit --no-fund --cache .npm-cache
+            rm -rf .npm-cache
