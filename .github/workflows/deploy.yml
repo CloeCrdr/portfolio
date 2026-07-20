@@ -35,19 +35,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Upload application sources to AlwaysData
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Upload runtime files to AlwaysData
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "README.md,angular.json,package.json,package-lock.json,proxy.conf.json,public,server,src,tsconfig.app.json,tsconfig.json"
+          source: "dist/portfolio-cloe/browser,server/index.js,server/package.json,server/package-lock.json"
           target: "${{ secrets.SSH_TARGET_DIR }}"
           strip_components: 0
           debug: true
 
-      - name: Install and build on AlwaysData
+      - name: Install runtime dependencies on AlwaysData
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -56,6 +68,8 @@ jobs:
           port: 22
           script: |
             set -e
-            cd "${{ secrets.SSH_TARGET_DIR }}"
-            npm ci
-            npm run build
+            rm -rf "${{ secrets.SSH_TARGET_DIR }}/node_modules"
+            mkdir -p "${{ secrets.SSH_TARGET_DIR }}/server"
+            cd "${{ secrets.SSH_TARGET_DIR }}/server"
+            rm -rf node_modules
+            npm ci --omit=dev
