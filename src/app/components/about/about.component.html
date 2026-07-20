@@ -1,24 +1,95 @@
-<section id="about" class="about" [class.inactive]="activeSection && activeSection!== 'about'" @fadeIn>
+<section
+  id="about"
+  class="about"
+  [class.inactive]="
+    activeSection &&
+    activeSection !== 'about'
+  "
+  @fadeIn
+>
 
   <div class="about-container">
+
     <div class="about-content">
-      <h1>Bienvenue sur mon portfolio !</h1>
-      <p>Je m'appelle Cloé Gaspar Cordeiro.</p>
-      <p>Développeuse passionnée par la tech, le code et les projets qui en jettent. 🚀
-        J'aime transformer des idées en applications concrètes, avec du code propre et des designs modernes.</p>
-      <p>Quand je ne suis pas devant mon écran, je suis probablement en train de griffonner sur un papier que ce soit du
-        dessin, de l'écriture ou ma prochaine maquette, ou à la recherche de la meilleure playlist pour coder 🎧.</p>
+
+      <span class="section-subtitle">
+        À PROPOS
+      </span>
+
+      <h1>
+        Développeuse web & créative digitale.
+      </h1>
+
+      <p class="about-intro">
+        Je conçois des expériences web
+        modernes mêlant développement,
+        automatisation, design et stratégie
+        digitale.
+      </p>
+
+      <div class="about-text">
+
+        <p>
+          Passionnée par la tech, le code
+          et les produits bien pensés,
+          j’aime transformer des idées
+          en solutions concrètes,
+          performantes et élégantes.
+        </p>
+
+        <p>
+          Mon approche combine
+          développement frontend,
+          backend, no-code,
+          automatisation et UX
+          afin de créer des projets
+          cohérents, maintenables
+          et centrés utilisateur.
+        </p>
+
+        <p>
+          Lorsque je ne développe pas,
+          je suis probablement en train
+          de travailler sur une maquette,
+          dessiner ou chercher
+          la playlist parfaite pour coder.
+        </p>
+
+      </div>
 
       <div class="about-buttons">
-        <a href="#projects" class="btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn-secondary">Me contacter</a>
+
+        <a
+          href="#projects"
+          class="btn-primary"
+        >
+          Voir mes projets
+        </a>
+
+        <a
+          href="#contact"
+          class="btn-secondary"
+        >
+          Me contacter
+        </a>
+
       </div>
+
     </div>
 
     <div class="about-image">
-      <img src="assets/images/about-photo.jpg" alt="Photo de Cloé Gaspar Cordeiro">
-    </div>
-  </div>
 
+      <div class="image-wrapper">
+
+        <img
+          src="assets/images/about-photo.jpg"
+          alt="Photo de Cloé Gaspar Cordeiro"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>

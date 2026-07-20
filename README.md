@@ -4,13 +4,19 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
-To start a local development server, run:
+To start the API locally, run:
 
 ```bash
-ng serve
+npm run start:api
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then, in a second terminal, start the Angular development server:
+
+```bash
+npm start
+```
+
+The Angular dev server proxies `/api` calls to `http://localhost:3000`, so the frontend and backend can use the same relative API URLs.
 
 ## Code scaffolding
 
@@ -35,6 +41,43 @@ ng build
 ```
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Alwaysdata deployment
+
+This repository is prepared for a Node.js deployment that serves both:
+
+- the Airtable-backed API under `/api`
+- the Angular build as static files
+
+Important: pushing to GitHub alone is not enough. On alwaysdata you still need to deploy the repository contents, install dependencies, build the frontend, and start the Node.js site.
+
+### Expected runtime setup
+
+1. Create a Node.js site in alwaysdata.
+2. Set the working directory to the project root.
+3. Use this start command:
+
+```bash
+node server/index.js
+```
+
+4. Define these environment variables in alwaysdata:
+
+```bash
+AIRTABLE_TOKEN=...
+AIRTABLE_BASE_ID=...
+```
+
+The server is compatible with alwaysdata's `HOST` / `IP` and `PORT` environment variables and will bind to them automatically.
+
+### Typical deployment flow
+
+```bash
+npm install
+npm run build
+```
+
+If you want a local secret template, copy `server/.env.example` to `server/.env` and fill in your Airtable values.
 
 ## Running unit tests
 

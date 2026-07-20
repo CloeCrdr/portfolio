@@ -1,13 +1,70 @@
-<nav>
-  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
-  <ul class="nav-menu" [class.active]="menuOpen">
-    <li><a href="#home" (click)="setActiveSection('')">Accueil</a></li>
-    <li><a href="#about" (click)="setActiveSection('about')">À propos</a></li>
-    <li><a href="#projects" (click)="setActiveSection('projects')">Projets</a></li>
-    <li><a href="#skills" (click)="setActiveSection('skills')">Compétences</a></li>
-    <li><a href="#contact" (click)="setActiveSection('contact')">Contact</a></li>
-  </ul>
-</nav>
-<app-home [activeSection]="activeSection"></app-home>
+<nav class="navbar">
 
-<button class="back-to-top" (click)="scrollToTop()" [class.show]="showButton">⬆</button>
+  <div class="nav-container">
+
+    <a
+      href="#home"
+      class="nav-logo"
+    >
+      CGC.
+    </a>
+
+    <button
+      class="menu-toggle"
+      (click)="toggleMenu()"
+    >
+      ☰
+    </button>
+
+    <ul
+      class="nav-menu"
+      [class.active]="menuOpen"
+    >
+
+      <li>
+        <a href="#home">
+          Accueil
+        </a>
+      </li>
+
+      <li>
+        <a href="#about">
+          À propos
+        </a>
+      </li>
+
+      <li>
+        <a href="#projects">
+          Projets
+        </a>
+      </li>
+
+      <li>
+        <a href="#skills">
+          Compétences
+        </a>
+      </li>
+
+      <li>
+        <a href="#contact">
+          Contact
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+
+<app-home
+  [activeSection]="activeSection"
+></app-home>
+
+<button
+  class="back-to-top"
+  (click)="scrollToTop()"
+  [class.show]="showButton"
+>
+  ↑
+</button>

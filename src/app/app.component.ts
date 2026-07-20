@@ -15,10 +15,6 @@ export class AppComponent {
   activeSection: string = '';
   showButton: boolean = false;
 
-  setActiveSection(section: string) {
-    this.activeSection = section;
-  }
-
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.showButton = window.pageYOffset > 100;

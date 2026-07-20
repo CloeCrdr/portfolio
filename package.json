@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:api": "node server/index.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:portfolio-cloe": "node dist/portfolio-cloe/server/server.mjs"
+    "serve:ssr:portfolio-cloe": "node server/index.js"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@angular/router": "^19.1.0",
     "@angular/ssr": "^19.1.6",
     "@emailjs/browser": "^4.4.1",
+    "airtable": "^0.12.2",
     "express": "^4.18.2",
     "jquery": "^3.7.1",
     "ngx-owl-carousel-o": "^19.0.0",

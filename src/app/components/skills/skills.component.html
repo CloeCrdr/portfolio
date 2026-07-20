@@ -1,51 +1,122 @@
-<section id="skills" 
+<section
+  id="skills"
   class="skills"
-  [class.inactive]="activeSection && activeSection!== 'skills'"
-  @fadeIn>
+  [class.inactive]="
+    activeSection &&
+    activeSection !== 'skills'
+  "
+  @fadeIn
+>
+
   <div class="skills-container">
-    <h2>Mes Compétences 🛠️</h2>
-    <div class="skills-category">
-      <h3>Développement web</h3>
-      <div class="skills-grid">
-        <div class="skill-badge" *ngFor="let skill of skills.developpement">{{ skill }}</div>
-      </div>
+
+    <div class="section-header">
+
+      <span class="section-subtitle">
+        EXPERTISE
+      </span>
+
+      <h2>
+        Mes compétences 🛠️
+      </h2>
+
+      <p>
+        Technologies, frameworks,
+        outils et expertises utilisés
+        dans mes projets web,
+        produit et no-code.
+      </p>
+
     </div>
 
-    <div class="skills-category">
-      <h3>Design</h3>
-      <div class="skills-grid">
-        <div class="skill-badge" *ngFor="let skill of skills.design">{{ skill }}</div>
+    <!-- STACKS -->
+
+    <div
+      class="skills-block"
+      *ngFor="
+        let type of
+        objectKeys(stacksByType)
+      "
+    >
+
+      <div class="block-header">
+
+        <h3>
+          {{ type }}
+        </h3>
+
       </div>
+
+      <div class="skills-grid">
+
+        <div
+          class="skill-card"
+          *ngFor="
+            let skill of
+            stacksByType[type]
+          "
+        >
+
+          <span class="skill-name">
+            {{ skill.nom }}
+          </span>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="skills-category">
-      <h3>Gestion de projets</h3>
-      <div class="skills-grid">
-        <div class="skill-badge" *ngFor="let skill of skills.projets">{{ skill }}</div>
+    <!-- BUSINESS -->
+
+    <div class="business-wrapper">
+
+      <div class="block-header">
+
+        <h2>
+          Expertises digitales
+        </h2>
+
       </div>
+
+      <div
+        class="skills-block"
+        *ngFor="
+          let category of
+          objectKeys(
+            businessSkillsByCategory
+          )
+        "
+      >
+
+        <h3 class="category-title">
+          {{ category }}
+        </h3>
+
+        <div class="skills-grid">
+
+          <div
+            class="skill-card"
+            *ngFor="
+              let skill of
+              businessSkillsByCategory[
+                category
+              ]
+            "
+          >
+
+            <span class="skill-name">
+              {{ skill.nom }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="skills-category">
-      <h3>Marketing</h3>
-      <div class="skills-grid">
-        <div class="skill-badge" *ngFor="let skill of skills.marketing">{{ skill }}</div>
-      </div>
-    </div>
-
-    <div class="skills-category">
-      <h3>Tests / Qualité / Sécurité</h3>
-      <div class="skills-grid">
-        <div class="skill-badge" *ngFor="let skill of skills.qualite">{{ skill }}</div>
-      </div>
-    </div>
-
-    <div class="skills-category">
-      <h3>Langues</h3>
-      <div class="skills-grid">
-        <div class="skill-badge" *ngFor="let skill of skills.langues">{{ skill }}</div>
-      </div>
-    </div>    
-    
   </div>
-  </section>
-  
+
+</section>
