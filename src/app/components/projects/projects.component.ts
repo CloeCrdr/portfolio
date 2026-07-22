@@ -89,6 +89,21 @@ implements OnInit {
     navText: ['<', '>']
   };
 
+  modalCarouselOptions = {
+    items: 1,
+    loop: true,
+    nav: true,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 3500,
+    autoplayHoverPause: true,
+    smartSpeed: 650,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    navText: ['<', '>']
+  };
+
   constructor(
     private projectsService:
     ProjectsService
@@ -132,11 +147,17 @@ implements OnInit {
       project.url_github
     );
 
+    const images = this.normalizeImages(
+      project.images,
+      project.image
+    );
+
     const normalizedProject = {
       title: project.title,
       description: project.description,
       descrLong: project.descr_long,
-      image: project.image,
+      image: images[0] || '',
+      images,
       stack: project.stack,
       lien: project.lien,
       urlGithub: project.url_github
@@ -167,6 +188,33 @@ implements OnInit {
       actionLabel: 'Voir le site',
       actionDisabled: true
     };
+  }
+
+  private normalizeImages(
+    images: unknown,
+    fallbackImage: unknown
+  ): string[] {
+
+    const imageList = Array.isArray(images)
+      ? images.filter(
+        (image): image is string =>
+          typeof image === 'string' &&
+          image.trim().length > 0
+      )
+      : [];
+
+    if (imageList.length > 0) {
+      return imageList;
+    }
+
+    if (
+      typeof fallbackImage === 'string' &&
+      fallbackImage.trim().length > 0
+    ) {
+      return [fallbackImage];
+    }
+
+    return [];
   }
 
   private getValidUrl(
@@ -205,6 +253,7 @@ interface ProjectApiModel {
   description: string;
   descr_long: string;
   image: string;
+  images?: string[];
   stack: string[];
   lien?: string | null;
   url_github?: string | null;
@@ -215,6 +264,7 @@ interface ProjectBaseModel {
   description: string;
   descrLong: string;
   image: string;
+  images: string[];
   stack: string[];
   lien?: string | null;
   urlGithub?: string | null;

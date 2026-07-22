@@ -17,15 +17,15 @@
       </span>
 
       <h2>
-        Une selection de projets.
+        Une sélection de projets.
       </h2>
 
       <p>
         Applications web, sites,
-        automatisations et experiences
-        digitales concus autour de la
+        automatisations et expériences
+        digitales conçus autour de la
         performance, du design
-        et de l'experience utilisateur.
+        et de l'expérience utilisateur.
       </p>
 
     </div>
@@ -151,11 +151,55 @@
       x
     </button>
 
-    <img
-      [src]="selectedProject.image"
-      [alt]="selectedProject.title"
-      class="modal-image"
-    />
+    <ng-container
+      *ngIf="
+        selectedProject.images.length > 1;
+        else singleModalImage
+      "
+    >
+
+      <owl-carousel-o
+        [options]="modalCarouselOptions"
+        class="modal-carousel"
+      >
+
+        <ng-container
+          *ngFor="
+            let image of selectedProject.images;
+            let index = index
+          "
+        >
+
+          <ng-template carouselSlide>
+
+            <img
+              [src]="image"
+              [alt]="
+                selectedProject.title +
+                ' - visuel ' +
+                (index + 1)
+              "
+              class="modal-image"
+            />
+
+          </ng-template>
+
+        </ng-container>
+
+      </owl-carousel-o>
+
+    </ng-container>
+
+    <ng-template #singleModalImage>
+
+      <img
+        *ngIf="selectedProject.image"
+        [src]="selectedProject.image"
+        [alt]="selectedProject.title"
+        class="modal-image"
+      />
+
+    </ng-template>
 
     <h2>
       {{ selectedProject.title }}

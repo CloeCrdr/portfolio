@@ -51,12 +51,16 @@ app.get('/api/projects', async (_, res) => {
 
     const projects = records.map((record) => {
       const stackIds = record.get('stack') || [];
+      const imageUrls = getAttachmentUrls(
+        record.get('image')
+      );
 
       return {
         title: record.get('Nom'),
         description: record.get('description'),
         descr_long: record.get('description_longue'),
-        image: record.get('image')?.[0]?.url || '',
+        image: imageUrls[0] || '',
+        images: imageUrls,
         stack: stackIds.map((id) => stacksMap[id]),
         lien: record.get('lien'),
         url_github: record.get('url_github'),
@@ -201,4 +205,14 @@ function loadLocalEnv(filePath) {
 
     process.env[key] = value;
   });
+}
+
+function getAttachmentUrls(fieldValue) {
+  if (!Array.isArray(fieldValue)) {
+    return [];
+  }
+
+  return fieldValue
+    .map((file) => file?.url)
+    .filter((url) => typeof url === 'string' && url.length > 0);
 }

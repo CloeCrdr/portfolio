@@ -28,7 +28,7 @@ export class ContactComponent {
     const publicKey = "-n8KTebo4UB3lII6a"
 
     const templateParams = {
-      subject: this.contact.subject, 
+      subject: this.contact.subject,
       name: this.contact.name,
       email: this.contact.email,
       message: this.contact.message
@@ -37,11 +37,11 @@ export class ContactComponent {
     emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then((response) => {
         console.log('Email envoyé avec succès !', response.status, response.text);
-        alert('Merci ! Votre message a bien été envoyé 🚀');
+        alert('Merci ! Votre message a bien été envoyé.');
         this.contact = { subject: '', name: '', email: '', message: '' };
       }, (err) => {
         console.error('Erreur lors de l\'envoi de l\'email :', err);
-        alert('Oups ! Une erreur est survenue 😢');
+        alert('Oups ! Une erreur est survenue.');
       });
   }
 }
